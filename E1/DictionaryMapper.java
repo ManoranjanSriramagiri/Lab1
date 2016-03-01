@@ -8,7 +8,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
 public class DictionaryMapper  extends Mapper<Text, Text, Text, Text> {
       // TODO define class variables for translation, language, and file name
-
+	//dklnldsnln
       public void setup(Context context) {    	   
       // TODO determine the language of the current file by looking at it's name
       }
