@@ -9,19 +9,21 @@ import org.apache.hadoop.conf.Configuration;
 
 public class DictionaryMapper extends Mapper<Text, Text, Text, Text> {
 	// TODO define class variables for translation, language, and file name
-	// dklnldsnln
-	/*
-	 * public void setup(Context context) { Configuration conf =
-	 * context.getConfiguration(); }
-	 */
-	private Text word = new Text();
+	String filename;
+	public void setup(Context context) {
+		Configuration conf = context.getConfiguration();
+		FileSplit fsFileSplit = (FileSplit) context.getInputSplit();
+	    filename = context.getConfiguration().get(fsFileSplit.getPath().getParent().getName());
+	}
 
+	private Text word = new Text();
 	public void map(Text key, Text value, Context context) throws IOException,
 			InterruptedException {
 
-		StringTokenizer itr = new StringTokenizer(value.toString(), ",");
+		StringTokenizer itr = new StringTokenizer(value.toString(), "\t");
 		while (itr.hasMoreTokens()) {
-			word.set(itr.nextToken());
+			word.set(filename +": "+itr.nextToken());
+			
 			context.write(key, word);
 		}
 	}
