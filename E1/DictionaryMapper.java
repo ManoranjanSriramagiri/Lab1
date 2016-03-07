@@ -12,8 +12,7 @@ public class DictionaryMapper extends Mapper<Text, Text, Text, Text> {
 	String filename;
 	public void setup(Context context) {
 		Configuration conf = context.getConfiguration();
-		FileSplit fsFileSplit = (FileSplit) context.getInputSplit();
-	    filename = context.getConfiguration().get(fsFileSplit.getPath().getParent().getName());
+	
 	}
 
 	private Text word = new Text();
