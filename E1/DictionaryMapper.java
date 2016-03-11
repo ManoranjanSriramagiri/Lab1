@@ -11,9 +11,14 @@ public class DictionaryMapper extends Mapper<Text, Text, Text, Text> {
 	String filename;
 
 	public void setup(Context context) {
+<<<<<<< HEAD
 		filename = ((FileSplit) context.getInputSplit()).getPath().getName()
 				.toString();
 		filename = filename.substring(0, filename.length() - 4);
+=======
+		Configuration conf = context.getConfiguration();
+	
+>>>>>>> origin/master
 	}
 
 	private Text englishWordMeaningValue = new Text();
